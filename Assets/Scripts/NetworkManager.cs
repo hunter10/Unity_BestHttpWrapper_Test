@@ -18,6 +18,13 @@ public class NetworkManager : MonoBehaviour
         CHECK_FRIENDS_STAGE,
     }
 
+    public string basePath = "https://jsonplaceholder.typicode.com";
+
+    public void OnClick()
+    {
+        AutoConnectToServer(CONNECT_NAME.CHECK_FRIENDS_STAGE);
+    }
+
     public void AutoConnectToServer(CONNECT_NAME _connectName, Dictionary<string, string> tempDic = null, GameObject target = null)
     {
         //NetworkManager.DebugLog(UserInfoManager.instance.user_No);
@@ -30,8 +37,15 @@ public class NetworkManager : MonoBehaviour
                 case CONNECT_NAME.CHECK_FRIENDS_STAGE:
                     //RESTClient.Api("friend/stage/last/info/" + "적당한값" + "/" + "적당한값", HTTPMethod.GET, (r) =>
                     //{
-                    //});
-                     
+                    //}, tempDic);
+
+                    string tempQuery = basePath + "/posts";
+                    RESTClient.Api(tempQuery, HTTPMethod.GET, (r) =>
+                    {
+                        Debug.Log(r.StatusCode);
+                        int a = 0;
+                    }, tempDic);
+
                     break;
             }
         }
