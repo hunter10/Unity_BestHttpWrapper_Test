@@ -20,6 +20,19 @@ public class NetworkManager : MonoBehaviour
 
     public string basePath = "https://jsonplaceholder.typicode.com";
 
+
+    public void Start()
+    {
+        if(!RESTClient.IsInitialized)
+        {
+            RESTClient.Init(OnInitialized);
+        }
+    }
+
+    private void OnInitialized()
+    {
+        Debug.Log("network Init");
+    }
     public void OnClick()
     {
         AutoConnectToServer(CONNECT_NAME.CHECK_FRIENDS_STAGE);
@@ -43,6 +56,16 @@ public class NetworkManager : MonoBehaviour
                     RESTClient.Api(tempQuery, HTTPMethod.GET, (r) =>
                     {
                         Debug.Log(r.StatusCode);
+                        Debug.Log(r.Text);
+                        //if (r.StatusCode == 200)
+                        //{
+
+                        //}
+                        //else
+                        //{
+
+                        //}
+                        
                         int a = 0;
                     }, tempDic);
 
