@@ -52,23 +52,29 @@ public class NetworkManager : MonoBehaviour
                     //{
                     //}, tempDic);
 
-                    string tempQuery = basePath + "/posts";
+                    //string tempQuery = basePath + "/posts";
+                    string tempQuery = "/posts";
+
+
+                    /*
+                    string recv = string.Empty;
+                    RESTClient.JsonApi(tempQuery, recv, (r) =>
+                    {
+                        Debug.Log(r.StatusCode);
+                        Debug.Log(r.Text);
+                        int a = 0;
+                    });
+                    */
+
+
+                    
                     RESTClient.Api(tempQuery, HTTPMethod.GET, (r) =>
                     {
                         Debug.Log(r.StatusCode);
                         Debug.Log(r.Text);
-                        //if (r.StatusCode == 200)
-                        //{
-
-                        //}
-                        //else
-                        //{
-
-                        //}
-                        
                         int a = 0;
                     }, tempDic);
-
+                    
                     break;
             }
         }

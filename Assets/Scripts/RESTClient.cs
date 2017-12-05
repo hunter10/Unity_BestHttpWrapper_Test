@@ -85,6 +85,7 @@ public sealed class RESTClient : ScriptableObject
         if (IsInitialized)
         {
             //NetworkManager.DebugLog("HOST : " + Impl.Host);
+            Debug.Log("HOST : " + Impl.Host);
             _impl.Api(query, method, callback, formData);
         }
     }
@@ -151,12 +152,15 @@ public sealed class RESTClient : ScriptableObject
             //if (GameInfoManager.Instance.isStageSever)
             {
                 //GameInfoManager.Instance.isDevServer = false;
-                Impl.Host = "https://127.0.0.1:8010";
+                //Impl.Host = "https://127.0.0.1:8010";
             }
             //else if (GameInfoManager.Instance.isDevServer)
             {
-                Impl.Host = "http://127.0.0.1:8010/";
+                //Impl.Host = "http://127.0.0.1:8010/";
             }
+
+            Impl.Host = "https://jsonplaceholder.typicode.com";
+
             //NetworkManager.DebugLog("HOST : " + Impl.Host);
             Impl.UserID = "1400000002";
             Impl.AccessToken = "unitytest";
